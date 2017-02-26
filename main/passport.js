@@ -23,6 +23,7 @@ const init = function PassportSetup(passport) {
       'repo'
     ]
   }, (accessToken, refreshToken, profile, callback)=>{
+    console.log(profile);
     process.nextTick(()=>{
       User.findOne({'login': profile.login}, (err, user)=>{
         if (err) {
