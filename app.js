@@ -6,11 +6,14 @@ const morgan = require('morgan');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const routes = require('./main/routes.js');
+const passportConfig = require('./main/passport.js');
+const config = require('./config.js');
 
 const app = express();
 
-var url = process.env.MONGODBURL || 'mongodb://localhost/gitlove-node-edition';
+var url = process.env.MONGODBURL || config.mongodburl;
 mongoose.connect(url);
+passportConfig(passport);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
