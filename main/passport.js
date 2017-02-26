@@ -35,8 +35,11 @@ const init = function PassportSetup(passport) {
         } else {
           var newUser = new User();
 
-          newUser.login = profile.login;
-          console.log(newUser.login);
+          newUser.login = profile._json.login;
+          newUser.id = profile._json.id;
+          newUser.avatar_url = profile._json.avatar_url;
+          newUser.repos_url = profile._json.repos_url;
+
           newUser.save((err)=>{
             if (err) {
               console.log(err);
