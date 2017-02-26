@@ -11,8 +11,11 @@ const passportConfig = require('./main/passport.js');
 
 const app = express();
 
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
+
 var url = process.env.MONGODBURL;
-mongoose.connect(url);
+mongoose.connect(url, options);
 passportConfig(passport);
 
 app.use(bodyParser.json());
