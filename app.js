@@ -23,4 +23,4 @@ app.use(passport.session());
 
 routes(app, passport);
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
