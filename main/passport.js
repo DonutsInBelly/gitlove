@@ -15,9 +15,9 @@ const init = function PassportSetup(passport) {
   });
 
   passport.use(new GitHubStrategy({
-    clientID: (process.env.GITHUBID),
-    clientSecret: (process.env.GITHUBSECRET),
-    callbackURL: 'http://localhost:' + (process.env.PORT || 8080) + '/callback/github',
+    clientID: process.env.GITHUBID,
+    clientSecret: process.env.GITHUBSECRET,
+    callbackURL: process.env.GITHUBCALLBACK,
     scope: [
       'user',
       'repo'
