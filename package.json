@@ -1,0 +1,28 @@
+{
+  "name": "gitlove-node-edition",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dominusbelli/gitlove-node-edition.git"
+  },
+  "author": "Carlin Au",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dominusbelli/gitlove-node-edition/issues"
+  },
+  "homepage": "https://github.com/dominusbelli/gitlove-node-edition#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "express-session": "^1.15.1",
+    "mongoose": "^4.8.5",
+    "morgan": "^1.8.1",
+    "passport": "^0.3.2",
+    "passport-github": "^1.1.0"
+  }
+}
