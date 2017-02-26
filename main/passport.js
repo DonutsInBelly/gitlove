@@ -36,6 +36,7 @@ const init = function PassportSetup(passport) {
           var newUser = new User();
 
           newUser.login = profile.login;
+          console.log(newUser.login);
           newUser.save((err)=>{
             if (err) {
               console.log(err);
