@@ -11,7 +11,7 @@ const theLanguage = function findLanguageInArray(lang) {
 
 }
 
-const findFavLanguage = function repoParser(repos_url) {
+const findFavLanguage = function repoParser(repos_url, callback) {
   request.get({
     url: repos_url
   }, (error, response, body)=>{
@@ -23,7 +23,7 @@ const findFavLanguage = function repoParser(repos_url) {
     console.log(body);
     for (var i = 0; i < body.length; i++) {
       if(results.includes(body[i].language)) {
-        body[i].value++;
+        body[i].value = body[i].value + 1;
       } else {
         var newLang = {
           language: body.language,
@@ -33,6 +33,7 @@ const findFavLanguage = function repoParser(repos_url) {
       }
     }
     console.log(results);
+    callback(null, results);
   });
 }
 
@@ -47,8 +48,9 @@ const init = function RouteHandler(app, passport) {
   }));
 
   app.get('/match', isLoggedIn, (req, res)=>{
-    var userLanguage = findFavLanguage(req.user.repos_url);
-    res.render('match.ejs', { user: req.user, userlanguage: userLanguage });
+    findFavLanguage(req.user.repos_url, (results)=>{
+      res.render('match.ejs', { user: req.user });
+    });
   });
 }
 
