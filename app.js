@@ -7,11 +7,11 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const routes = require('./main/routes.js');
 const passportConfig = require('./main/passport.js');
-const config = require('./config.js');
+//const config = require('./config.js');
 
 const app = express();
 
-var url = process.env.MONGODBURL || config.mongodburl;
+var url = process.env.MONGODBURL;
 mongoose.connect(url);
 passportConfig(passport);
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const GitHubStrategy = require('passport-github').Strategy;
 const User = require('./user.js');
-const config = require('../config.js');
+//const config = require('../config.js');
 
 const init = function PassportSetup(passport) {
   passport.serializeUser((user, callback)=>{
@@ -15,8 +15,8 @@ const init = function PassportSetup(passport) {
   });
 
   passport.use(new GitHubStrategy({
-    clientID: (process.env.GITHUBID || config.githubid),
-    clientSecret: (process.env.GITHUBSECRET || config.githubsecret),
+    clientID: (process.env.GITHUBID),
+    clientSecret: (process.env.GITHUBSECRET),
     callbackURL: 'http://localhost:' + (process.env.PORT || 8080) + '/callback/github',
     scope: [
       'user',
