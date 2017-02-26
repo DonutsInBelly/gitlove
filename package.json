@@ -19,6 +19,7 @@
   "homepage": "https://github.com/dominusbelli/gitlove-node-edition#readme",
   "dependencies": {
     "body-parser": "^1.16.1",
+    "ejs": "^2.5.6",
     "express": "^4.14.1",
     "express-session": "^1.15.1",
     "mongoose": "^4.8.5",
