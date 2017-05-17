@@ -13,7 +13,10 @@ const theLanguage = function findLanguageInArray(lang) {
 
 const findFavLanguage = function repoParser(repos_url, callback) {
   request.get({
-    url: repos_url
+    url: repos_url,
+    headers: {
+      'User-Agent': 'gitlove-node-edition'
+    }
   }, (error, response, body)=>{
     // Find Favorite language
     if (error) {
@@ -50,7 +53,7 @@ const init = function RouteHandler(app, passport) {
 
   app.get('/match', isLoggedIn, (req, res)=>{
     findFavLanguage(req.user.repos_url, (results)=>{
-      res.render('match.ejs', { user: req.user });
+      res.render('match.ejs', { user: req.user, matches: results });
     });
   });
 }
