@@ -55,9 +55,11 @@ const init = function RouteHandler(app, passport) {
   }));
 
   app.get('/match', isLoggedIn, (req, res)=>{
-    findFavLanguage(req.user.repos_url, (results)=>{
-      res.render('match.ejs', { user: req.user});//, matches: results });
-    });
+    console.log(req.user.repos_url);
+    res.render('match.ejs', { user: req.user});
+    // findFavLanguage(req.user.repos_url, (results)=>{
+    //   res.render('match.ejs', { user: req.user});//, matches: results });
+    // });
   });
 }
 
