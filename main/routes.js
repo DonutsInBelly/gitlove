@@ -24,8 +24,9 @@ const findFavLanguage = function repoParser(repos_url, callback) {
     }
     var results = [];
     //console.log("response: \n" + response);
+    body = JSON.parse(body);
+    //console.log(JSON.parse(body));
     console.log("body length: " + body.length);
-    console.log(JSON.parse(body));
     for (var i = 0; i < body.length; i++) {
       console.log(body[i].language);
       if(results.includes(body[i].language)) {
@@ -55,11 +56,9 @@ const init = function RouteHandler(app, passport) {
   }));
 
   app.get('/match', isLoggedIn, (req, res)=>{
-    console.log(req.user.repos_url);
-    res.render('match.ejs', { user: req.user});
-    // findFavLanguage(req.user.repos_url, (results)=>{
-    //   res.render('match.ejs', { user: req.user});//, matches: results });
-    // });
+    findFavLanguage(req.user.repos_url, (results)=>{
+      res.render('match.ejs', { user: req.user, matches: results });
+    });
   });
 }
 
