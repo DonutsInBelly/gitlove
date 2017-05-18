@@ -66,6 +66,11 @@ const init = function RouteHandler(app, passport) {
     res.render('index.ejs');
   });
 
+  app.get('/logout', (req, res)=>{
+    req.logout();
+    res.redirect('/');
+  });
+
   app.get('/callback/github', passport.authenticate('github', {
     successRedirect: '/match',
     failureRedirect: '/'
