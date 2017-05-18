@@ -9,7 +9,6 @@ const isLoggedIn = function checkLoggedIn(req, res, next) {
 }
 
 const theLanguage = function findLanguageInArray(lang) {
-
 }
 
 const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
@@ -33,6 +32,9 @@ const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
     console.log("body length: " + body.length);
     for (var i = 0; i < body.length; i++) {
       console.log(body[i].language);
+      if (body[i].language === undefined) {
+        break;
+      }
       var langFound = false;
       for (var j = 0; j < results.length; j++) {
         if (results[j].language === body[i].language) {
