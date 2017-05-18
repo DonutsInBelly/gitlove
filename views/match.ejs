@@ -2,7 +2,7 @@
 <a href="/logout">Logout</a>
 <h2>Hi <%= user.login %>!</h2>
 <img src=<%= user.avatar_url %> />
+<h3>Favorite Language: </h3>
 <% languages.forEach((item)=>{ %>
-<%= item.language %>:<%= item.value %>
+<p><%= item.language %>:<%= item.value %></p>
 <% }); %>
-<!-- <h3>Favorite Language: </h3> -->

@@ -1,3 +1,4 @@
+// add async later
 const request = require('request');
 
 const isLoggedIn = function checkLoggedIn(req, res, next) {
@@ -47,6 +48,7 @@ const findFavLanguage = function repoParser(repos_url, callback) {
     }
     console.log(results);
     // Now that we have all the results, lets sort them
+    // this need async magic
     results.sort((a, b)=>{
       return b - a;
     });
