@@ -8,9 +8,6 @@ const isLoggedIn = function checkLoggedIn(req, res, next) {
   res.redirect('/');
 }
 
-const theLanguage = function findLanguageInArray(lang) {
-}
-
 const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
   request.get({
     url: repos_url,
@@ -53,11 +50,19 @@ const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
     }
     console.log(results);
     // Now that we have all the results, lets sort them
-    // this need async magic
-    results.sort((a, b)=>{
-      return b - a;
-    });
-    callback(null, results);
+    // this needs async magic
+    async.series([
+      (done)=>{
+        results.sort((a, b)=>{
+          return b - a;
+        });
+        done(null, 1);
+      },
+      (done)=>{
+        callback(null, results);
+        done(null, 2);
+      }
+    ]);
   });
 }
 
