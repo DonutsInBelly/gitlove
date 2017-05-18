@@ -1,4 +1,5 @@
 // add async later
+const async = require('async');
 const request = require('request');
 
 const isLoggedIn = function checkLoggedIn(req, res, next) {
