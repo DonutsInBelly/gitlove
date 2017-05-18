@@ -16,7 +16,7 @@ const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
   request.get({
     url: repos_url,
     qs: {
-      'per_page': public_repos
+      per_page: public_repos
     },
     headers: {
       'User-Agent': 'gitlove-node-edition'
