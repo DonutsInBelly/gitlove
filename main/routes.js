@@ -29,19 +29,21 @@ const findFavLanguage = function repoParser(repos_url, callback) {
     console.log("body length: " + body.length);
     for (var i = 0; i < body.length; i++) {
       console.log(body[i].language);
+      var langFound = false;
       for (var j = 0; j < results.length; j++) {
         if (results[j].language === body[i].language) {
           results[j].value = results[j].value + 1;
+          langFound = true;
           break;
         }
-        if (j+1 == body.length) {
-          var newLang = {
-            language: body[i].language,
-            value: 1
-          }
-          //console.log("Current Results: " + results.length);
-          results.push(newLang);
+      }
+      if (!langFound) {
+        var newLang = {
+          language: body[i].language,
+          value: 1
         }
+        //console.log("Current Results: " + results.length);
+        results.push(newLang);
       }
     }
     console.log(results);
