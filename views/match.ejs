@@ -2,5 +2,7 @@
 <a href="/logout">Logout</a>
 <h2>Hi <%= user.login %>!</h2>
 <img src=<%= user.avatar_url %> />
-<%= matches %>
+<% for (var i=0; i<languages.length; i++) { %>
+<%= languages[i].language %>:<%= languages[i].value %>
+<% } %>
 <!-- <h3>Favorite Language: </h3> -->
