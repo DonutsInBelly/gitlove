@@ -1,5 +1,5 @@
 const async = require('async');
-const require = require('request');
+const request = require('request');
 
 const isLoggedIn = function checkLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
