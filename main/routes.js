@@ -53,11 +53,12 @@ const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
     async.waterfall([
       (done1)=>{
         done1(null, results.sort((a, b)=>{
+          console.log(results);
           return b - a;
         }));
       },
       (done2)=>{
-        console.log(results);
+        //console.log(results);
         callback(null, results);
       }
     ]);
