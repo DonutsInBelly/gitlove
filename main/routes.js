@@ -52,10 +52,9 @@ const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
     // Now that we have all the results, lets sort them
     async.waterfall([
       (done1)=>{
-        results.sort((a, b)=>{
+        done1(null, results.sort((a, b)=>{
           return b - a;
-        });
-        done1(null, results);
+        }));
       },
       (done2)=>{
         callback(null, results);
