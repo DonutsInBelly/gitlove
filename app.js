@@ -21,6 +21,7 @@ passportConfig(passport);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan('dev'));
+app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'ejs');
 
 app.use(session({ secret: 'hackbu' }));
