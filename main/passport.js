@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const GitHubStrategy = require('passport-github').Strategy;
-const User = require('./user.js');
+const User = require('../models/user.js');
 //const config = require('../config.js');
 
 const init = function PassportSetup(passport) {
