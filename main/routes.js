@@ -51,19 +51,12 @@ const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
     }
     console.log(results);
     // Now that we have all the results, lets sort them
-    // this needs async magic
-    async.series([
-      (done)=>{
-        results.sort((a, b)=>{
-          return b - a;
-        });
-        done(null, 1);
-      },
-      (done)=>{
-        callback(null, results);
-        done(null, 2);
-      }
-    ]);
+    setTimeout(()=>{
+      results.sort((a, b)=>{
+        return b - a;
+      });
+    }, 1000);
+    callback(null, results);
   });
 }
 
@@ -83,9 +76,13 @@ const init = function RouteHandler(app, passport) {
   }));
 
   app.get('/match', isLoggedIn, (req, res)=>{
+
+  });
+
+  app.get('/profile', isLoggedIn, (req, res)=>{
     findFavLanguage(req.user.repos_url, req.user.public_repos, (err, results)=>{
       console.log(results);
-      res.render('match.ejs', { user: req.user, languages: results });
+      res.render('profile.ejs', { user: req.user, languages: results });
     });
   });
 }

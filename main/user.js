@@ -7,7 +7,11 @@ var userSchema = new Schema({
   id: Number,
   avatar_url: String,
   repos_url: String,
-  language: String
+  languages: {
+    one: String,
+    two: String,
+    three: String,
+  }
 });
 
 module.exports = mongoose.model('User', userSchema);
