@@ -49,14 +49,21 @@ const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
         results.push(newLang);
       }
     }
-    console.log(results);
     // Now that we have all the results, lets sort them
+    async.waterfall([
+      (done1)=>{
+        results.sort((a, b)=>{
+          return b - a;
+        });
+        done1(null, results);
+      },
+      (done2)=>{
+        callback(null, results);
+      }
+    ]);
     setTimeout(()=>{
-      results.sort((a, b)=>{
-        return b - a;
-      });
     }, 1000);
-    callback(null, results);
+    console.log(results);
   });
 }
 
@@ -71,17 +78,16 @@ const init = function RouteHandler(app, passport) {
   });
 
   app.get('/callback/github', passport.authenticate('github', {
-    successRedirect: '/match',
+    successRedirect: '/profile',
     failureRedirect: '/'
   }));
 
   app.get('/match', isLoggedIn, (req, res)=>{
-
   });
 
   app.get('/profile', isLoggedIn, (req, res)=>{
     findFavLanguage(req.user.repos_url, req.user.public_repos, (err, results)=>{
-      console.log(results);
+      //console.log(results);
       res.render('profile.ejs', { user: req.user, languages: results });
     });
   });
