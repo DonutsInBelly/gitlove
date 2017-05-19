@@ -54,7 +54,7 @@ const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
       (done1)=>{
         done1(null, results.sort((a, b)=>{
           console.log(results);
-          return b - a;
+          return b.value - a.value;
         }));
       },
       (done2)=>{
