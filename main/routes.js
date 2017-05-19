@@ -57,12 +57,12 @@ const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
         }));
       },
       (done2)=>{
+        console.log(results);
         callback(null, results);
       }
     ]);
-    setTimeout(()=>{
-    }, 1000);
-    console.log(results);
+    // setTimeout(()=>{
+    // }, 1000);
   });
 }
 
