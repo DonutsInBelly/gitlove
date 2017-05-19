@@ -64,7 +64,7 @@ const findFavLanguage = function repoParser(repos_url, public_repos, callback) {
 }
 
 
-model.exports = {
+module.exports = {
   LoginRequired: isLoggedIn,
   LanguageFinder: findFavLanguage
 }
