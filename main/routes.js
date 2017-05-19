@@ -2,6 +2,7 @@
 const async = require('async');
 const request = require('request');
 const lib = require('./lib.js');
+const RegistrationSystem = require('./registration.js');
 const User = require('../models/user.js');
 
 const init = function RouteHandler(app, passport) {
@@ -15,12 +16,12 @@ const init = function RouteHandler(app, passport) {
   });
 
   app.get('/callback/github', passport.authenticate('github', {
-    successRedirect: '/profile',
+    successRedirect: '/match',
     failureRedirect: '/'
   }));
 
   app.get('/match', lib.LoginRequired, (req, res)=>{
-
+    //User.findOne()
   });
 
   app.get('/profile', lib.LoginRequired, (req, res)=>{
@@ -29,6 +30,8 @@ const init = function RouteHandler(app, passport) {
       res.render('profile.ejs', { user: req.user, languages: results });
     });
   });
+
+  RegistrationSystem();
 }
 
 module.exports = init;
