@@ -7,11 +7,22 @@ var userSchema = new Schema({
   id: Number,
   avatar_url: String,
   repos_url: String,
-  languages: {
+  topLanguages: {
     one: String,
     two: String,
     three: String,
-  }
+  },
+  data: [
+    {
+      language: String,
+      value: Number
+    }
+  ],
+  lastUpdate: { type: Date, default: Date.now }
 });
+
+userSchema.methods.determineCompatibility = function calculateSimilarity(otherUser) {
+
+}
 
 module.exports = mongoose.model('User', userSchema);

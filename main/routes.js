@@ -27,6 +27,19 @@ const init = function RouteHandler(app, passport) {
   app.get('/profile', lib.LoginRequired, (req, res)=>{
     lib.LanguageFinder(req.user.repos_url, req.user.public_repos, (err, results)=>{
       //console.log(results);
+      User.findOne({ 'login': req.user.login }, (err, user)=>{
+        if (err) {
+          callback(err);
+        }
+        user.data = results;
+        user.lastUpdate = Date.now();
+        user.save((err)=>{
+          if (err) {
+            console.log(err);
+            throw err;
+          }
+        });
+      });
       res.render('profile.ejs', { user: req.user, languages: results });
     });
   });
