@@ -44,7 +44,7 @@ const init = function RouteHandler(app, passport) {
     });
   });
 
-  RegistrationSystem();
+  //RegistrationSystem();
 }
 
 module.exports = init;
