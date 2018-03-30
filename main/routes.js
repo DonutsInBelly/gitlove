@@ -2,7 +2,7 @@
 const async = require('async');
 const request = require('request');
 const lib = require('./lib.js');
-const RegistrationSystem = require('./registration.js');
+// const RegistrationSystem = require('./registration.js');
 const User = require('../models/user.js');
 
 const init = function RouteHandler(app, passport) {
